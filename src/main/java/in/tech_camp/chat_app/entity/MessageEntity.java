@@ -11,5 +11,5 @@ public class MessageEntity {
   private UserEntity user;
   private RoomEntity room;
   private String image;
-  private Timestamp createAt;
+  private Timestamp createdAt;
 }
