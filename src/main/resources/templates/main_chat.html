@@ -26,12 +26,12 @@
       </div>
     </div>
 
-    <form th:action="@{/rooms/{roomId}/messages(roomId=${room.id})}" method="post" th:object="${messageForm}" class="main_chat_form">
+    <form th:action="@{/rooms/{roomId}/messages(roomId=${room.id})}" method="post" th:object="${messageForm}" class="main_chat_form" enctype="multipart/form-data">
       <div class="form-input">
         <input th:field="*{content}" class="form-message" placeholder="type a message">
         <label class="form-image">
           <span class="image-file">画像</span>
-          <input type="file" class="hidden">
+          <input type="file" class="hidden" th:field="*{image}">
         </label>
       </div>
       <input type="submit" class="form-submit" value="送信">
