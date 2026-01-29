@@ -80,10 +80,11 @@ public class MessageController {
     if (imageFile != null && !imageFile.isEmpty()) {
 
       try {
-        String uploadUrl = imageUrl.getImageUrl();
+        String uploadDir = imageUrl.getImageUrl();
         String fileName = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss")) + "_" + imageFile.getOriginalFilename();
-        Path imagePath  = Paths.get(uploadUrl, fileName);
-        Files.copy(imageFile.getInputStream(), imagePath);        
+        Path imagePath  = Paths.get(uploadDir, fileName);
+        Files.copy(imageFile.getInputStream(), imagePath);
+        message.setImage("/uploads/" + fileName);  
       } catch (IOException e) {
         System.out.println("エラー:" + e);
         return "redirect:/rooms/" + roomId + "messages";
