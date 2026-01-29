@@ -20,7 +20,7 @@ public interface MessageRepository {
 
   @Select("SELECT * FROM messages WHERE room_id = #{roomId}")
   @Results(value = {
-    @Result(property= "createdAt", column="created_at"),
+    @Result(property= "createdAt", column="create_at"),
     @Result(property= "user", column="user_id",
       one=@One(select="in.tech_camp.chat_app.repository.UserRepository.findById"))
   })
