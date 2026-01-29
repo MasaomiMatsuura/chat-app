@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import in.tech_camp.chat_app.custom_user.CustomUserDetail;
@@ -23,6 +24,7 @@ import in.tech_camp.chat_app.repository.RoomUserRepository;
 import in.tech_camp.chat_app.repository.UserRepository;
 import in.tech_camp.chat_app.validation.ValidationOrder;
 import lombok.AllArgsConstructor;
+
 
 
 
@@ -95,6 +97,12 @@ public class RoomController {
         return "rooms/new";
       }
     }
+    return "redirect:/";
+  }
+  
+  @PostMapping("/rooms/{roomId}/delete")
+  public String deleteRoom(@PathVariable Integer roomId) {
+    roomRepository.deleteById(roomId);
     return "redirect:/";
   }
   
