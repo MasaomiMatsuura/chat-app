@@ -26,4 +26,7 @@ public interface MessageRepository {
   })
   List<MessageEntity> findByRoomId(Integer roomId);
 
+  @Select("SELECT COUNT(*) FROM messages")
+  int count();
+
 }
